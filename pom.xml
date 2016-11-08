@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>qcom.itlegal.ipit</groupId>
+    <artifactId>ipit-automation-runner</artifactId>
+    <version>1.0.4-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <java_code.version>1.7</java_code.version>
+
+        <ipit-automation-service.version>1.0.6</ipit-automation-service.version>
+        <commons.io.version>2.4</commons.io.version>
+
+        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+        <maven-assembly-plugin.version>2.5.5</maven-assembly-plugin.version>
+        <maven-clean-plugin.version>2.4.1</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-release-plugin.version>2.3.2</maven-release-plugin.version>
+        <maven-scm-provider-gitxexe.version>1.9</maven-scm-provider-gitxexe.version>
+        <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+    </properties>
+
+    <scm>
+        <connection>scm:git:https://github.qualcomm.com/c-anlomb/ipit-automation-runner</connection>
+        <developerConnection>scm:git:https://github.qualcomm.com/c-anlomb/ipit-automation-runner</developerConnection>
+        <url>scm:git:https://github.qualcomm.com/c-anlomb/ipit-automation-runner</url>
+        <tag>1.0.2</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Anthony Lombardo</name>
+            <email>AnthonyL22@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Clear BSD License</name>
+            <url>http://svn.openlayers.org/trunk/openlayers/license.txt</url>
+            <comments>For any parts of OpenLayers</comments>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>qcom.itlegal.ipit</groupId>
+            <artifactId>ipit-automation-service</artifactId>
+            <version>${ipit-automation-service.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java_code.version}</source>
+                    <target>${java_code.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>${maven-scm-provider-gitxexe.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>qcom.itlegal.ipit.runner.SaucelabsRunner</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>lib/</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+
+        <repository>
+            <id>legalIT-nexus</id>
+            <name>Legal IT Repo</name>
+            <url>http://maven/content/groups/legalit</url>
+        </repository>
+
+    </repositories>
+
+    <distributionManagement>
+
+        <repository>
+            <id>legalIT-nexus</id>
+            <name>Legal IT Releases</name>
+            <url>http://maven.qualcomm.com/content/repositories/legal_it_releases</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+
+        <snapshotRepository>
+            <id>legalIT-nexus</id>
+            <name>Legal IT Snapshots</name>
+            <url>http://maven.qualcomm.com/content/repositories/legal_it_snapshot</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+
+    </distributionManagement>
+
+</project>

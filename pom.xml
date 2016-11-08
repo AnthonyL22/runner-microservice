@@ -126,7 +126,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>qcom.itlegal.ipit.runner.SaucelabsRunner</mainClass>
+                            <mainClass>com.pwc.runner.SaucelabsRunner</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>lib/</Class-Path>

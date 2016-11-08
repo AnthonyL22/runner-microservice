@@ -15,7 +15,7 @@ against any browser/version/platform version(s) selected in the Saucelabs Jenkin
 executed the test results are output to the target/failsafe-reports-X (X = index of the number of 
 browser/version/platform version(s) combinations you ran against.
 
-This tool assumes you are using the [ipit-automation-service](http://toautoweb2.na.qualcomm.com:8080/job/ipit-automation-service/)
+This tool assumes you are using the [core-microservice](https://github.com/AnthonyL22/core-microservice/)
 
 ## Prerequisites
 
@@ -28,15 +28,15 @@ This tool assumes you are using the [ipit-automation-service](http://toautoweb2.
 
 ```
 <dependency>
-    <groupId>qcom.itlegal.ipit</groupId>
-    <artifactId>ipit-automation-runner</artifactId>
-    <version>1.0.1</version>
+    <groupId>com.pwc.runner</groupId>
+    <artifactId>runner-microservice</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ## Simplified Order of Operations
 
-1. Compile Saucelabs Runner via [Jenkins Job](http://toautoweb2.na.qualcomm.com:8080/job/ipit-automation-runner/)
+1. Compile Saucelabs Runner via [Jenkins Job](https://github.com/AnthonyL22/runner-microservice/)
 2. Execute Saucelabs Runner JAR with SAUCE_ONDEMAND_BROWSERS environment variable set
 3. Generate PERL script named 'parallel-exec.pl'
 4. Run PERL script
@@ -109,7 +109,7 @@ Preconditions of this output are:
 6. Arg[4] OPTIONAL File Name to resulting PERL file variable args sent on command line during execution
 
 ```
-java -cp "C:\Program Files (x86)\Jenkins\workspace\ipit-automation-runner\target\ipit-automation-runner-1.0.0-SNAPSHOT.jar" qcom.itlegal.ipit.runner.SaucelabsRunner %Test_Profile% %Test_Environment%
+java -cp "C:\Program Files (x86)\Jenkins\workspace\runner-microservice\target\runner-microservice-1.0.0-SNAPSHOT.jar" com.pwc.runner.SaucelabsRunner %Test_Profile% %Test_Environment%
 ```
 
 ## Acceptable Browser Resolutions
@@ -122,27 +122,20 @@ java -cp "C:\Program Files (x86)\Jenkins\workspace\ipit-automation-runner\target
 ## PERL Output Sample
 
 ```
-
 #! perl -slw
 use strict;
 use Thread qw(yield async);
-
 system("mvn clean install");
-
 my $t0 = async{
 `mvn install -Pacceptance -Dtest.env=pad-dev -Dbrowser="chrome" -Dplatform="Windows 10" -Dbrowser.version=45 -Dtest.results.dir=failsafe-reports-0`
 };
-
 my $t1 = async{
 `mvn install -Pacceptance -Dtest.env=pad-dev -Dbrowser="firefox" -Dplatform="Windows 7" -Dbrowser.version=44 -Dtest.results.dir=failsafe-reports-1`
 };
-
 my $output0 = $t0->join;
 my $output1 = $t1->join;
-
 print for $output0;
 print for $output1;
-
 ```
 
 ## Test Results

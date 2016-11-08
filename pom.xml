@@ -4,7 +4,7 @@
 
     <groupId>qcom.itlegal.ipit</groupId>
     <artifactId>ipit-automation-runner</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -23,10 +23,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:https://github.qualcomm.com/c-anlomb/ipit-automation-runner</connection>
-        <developerConnection>scm:git:https://github.qualcomm.com/c-anlomb/ipit-automation-runner</developerConnection>
-        <url>scm:git:https://github.qualcomm.com/c-anlomb/ipit-automation-runner</url>
-        <tag>1.0.2</tag>
+        <connection>scm:git:https://github.com/AnthonyL22/runner-microservice</connection>
+        <developerConnection>scm:git:https://github.com/AnthonyL22/runner-microservice</developerConnection>
+        <url>scm:git:https://github.com/AnthonyL22/runner-microservice</url>
     </scm>
 
     <developers>
@@ -132,7 +131,7 @@
         </plugins>
     </build>
 
-    <repositories>
+<!--     <repositories>
 
         <repository>
             <id>legalIT-nexus</id>
@@ -158,6 +157,6 @@
             <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
 
-    </distributionManagement>
+    </distributionManagement> -->
 
 </project>

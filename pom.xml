@@ -5,6 +5,7 @@
     <groupId>qcom.itlegal.ipit</groupId>
     <artifactId>ipit-automation-runner</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>Runner Microservice</name>
     <packaging>jar</packaging>
 
     <properties>

@@ -58,7 +58,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.github.anthonyl22.core</groupId>
+            <groupId>com.pacificwebconsulting.core</groupId>
             <artifactId>core-microservice</artifactId>
             <version>${core-microservice.version}</version>
         </dependency>

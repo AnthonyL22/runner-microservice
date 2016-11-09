@@ -9,14 +9,7 @@ import java.io.File;
 import java.util.*;
 
 /**
- * Utility to generate the PERL script necessary to run Maven tasks
- * concurrently on the same server using Sauce labs
- * <p/>
- * args[0] - Maven PROFILE name
- * args[1] - ENVIRONMENT config name
- * args[2] - OPTIONAL: Browser Resolution
- * args[3] - OPTIONAL: override path to where the PERL file is written to
- * args[4] - OPTIONAL: override file name of PERL file
+ * Utility to generate the PERL script necessary to run Maven tasks concurrently on the same server using Sauce labs
  */
 public class SaucelabsRunner {
 
@@ -38,6 +31,19 @@ public class SaucelabsRunner {
     private static String browserResolution;
     private static String outputFilePath = null;
 
+    /**
+     * Entry point into the Sauce Labs runner application
+     *
+     * @param args arguments are to be used in exact order:
+     *             <ul>
+     *             <li>1. Jenkins and Sauce Labs Plugin setting SAUCE_ONDEMAND_BROWSERS environment variable</li>
+     *             <li>2. Arg[0] MANDATORY Test Profile variable args sent on command line during execution</li>
+     *             <li>3. Arg[1] MANDATORY Test Environment variable args sent on command line during execution</li>
+     *             <li>4. Arg[2] OPTIONAL Browser Resolution variable args sent on command line during execution</li>
+     *             <li>5. Arg[3] OPTIONAL File Path to resulting PERL file variable args sent on command line during execution</li>
+     *             <li>6. Arg[4] OPTIONAL File Name to resulting PERL file variable args sent on command line during execution</li>
+     *             </ul>
+     */
     public static void main(String[] args) {
 
 //        manualMobileBasedEnvSetup();
@@ -78,7 +84,6 @@ public class SaucelabsRunner {
      * Configure the runnable OPTIONAL PERL file path
      *
      * @param args current runtime arguments
-     * @return partial path to runnable PERL file
      */
     private static void configureRunnableFileOutputPath(String[] args) {
         if (args.length > 3) {
@@ -93,7 +98,6 @@ public class SaucelabsRunner {
      * Configure the runnable OPTIONAL PERL file name (.pl) and it's full path
      *
      * @param args current runtime arguments
-     * @return completed path to runnable PERL file
      */
     private static void configureRunnableFileNameAndFullPath(String[] args) {
         if (args.length > 4) {
@@ -222,8 +226,8 @@ public class SaucelabsRunner {
     }
 
     /**
-     * This is a helper method that should only be used to test the application.  Typically, this environment
-     * variable is typcially set by the Jenkins Sauce labs plugin
+     * This is a Mobile Mode helper method that should only be used to test the application.  Typically, this environment
+     * variable is typically set by the Jenkins Sauce labs plugin
      */
     private static void manualMobileBasedEnvSetup() {
         String MOCK_MOBILE_TEST_ENV_VAR = "[{\"os\":\"android\",\"platform\":\"ANDROID\",\"browser\":\"android\",\"browser-version\":\"4.4\",\"long-name\":\"LG Nexus 4 Emulator\",\"long-version\":\"4.4.\",\"url\":\"sauce-ondemand:?os=android&browser=android&browser-version=4.4&username=pad-jenkins&access-key=71047900-7f51-4185-a3d7-5d2b413f2efa\",\"device\":\"LG Nexus 4 Emulator\",\"device-orientation\":\"portrait\"},{\"os\":\"android\",\"platform\":\"ANDROID\",\"browser\":\"android\",\"browser-version\":\"4.4\",\"long-name\":\"Samsung Galaxy Nexus Emulator\",\"long-version\":\"4.4.\",\"url\":\"sauce-ondemand:?os=android&browser=android&browser-version=4.4&username=pad-jenkins&access-key=71047900-7f51-4185-a3d7-5d2b413f2efa\",\"device\":\"Samsung Galaxy Nexus Emulator\",\"device-orientation\":\"landscape\"}]";
@@ -232,6 +236,10 @@ public class SaucelabsRunner {
         PropertiesUtils.setEnv(map);
     }
 
+    /**
+     * This is a Browser Mode helper method that should only be used to test the application.  Typically, this environment
+     * variable is typically set by the Jenkins Sauce labs plugin
+     */
     private static void manualBrowserBasedEnvSetup() {
         String MOCK_BROWSER_TEST_ENV_VAR = "[{\"os\":\"Windows 10\",\"platform\":\"XP\",\"browser\":\"chrome\",\"browser-version\":\"45\",\"long-name\":\"Chrome\",\"long-version\":\"10.0.2.\",\"url\":\"sauce-ondemand:?os=Windows 10&browser=chrome&browser-version=45&username=pad-jenkins&access-key=71047900-7f51-4185-a3d7-5d2b413f2efa\"},{\"os\":\"Windows 10\",\"platform\":\"XP\",\"browser\":\"chrome\",\"browser-version\":\"44\",\"long-name\":\"Chrome\",\"long-version\":\"12.0.\",\"url\":\"sauce-ondemand:?os=Windows 10&browser=chrome&browser-version=44&username=pad-jenkins&access-key=71047900-7f51-4185-a3d7-5d2b413f2efa\"}]";
         Map<String, String> map = new HashMap<>();

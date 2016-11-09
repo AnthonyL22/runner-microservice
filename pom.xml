@@ -6,6 +6,8 @@
     <artifactId>runner-microservice</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>Runner Microservice</name>
+    <description>Sauce Labs concurrent execution test runner</description>
+    <url>https://github.com/AnthonyL22/runner-microservice</url>
     <packaging>jar</packaging>
 
     <properties>
@@ -24,6 +26,7 @@
         <maven-release-plugin.version>2.3.2</maven-release-plugin.version>
         <maven-scm-provider-gitxexe.version>1.9</maven-scm-provider-gitxexe.version>
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         
     </properties>
 
@@ -67,6 +70,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+            </plugin>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -136,33 +144,5 @@
             </plugin>
         </plugins>
     </build>
-
-<!--     <repositories>
-
-        <repository>
-            <id>legalIT-nexus</id>
-            <name>Legal IT Repo</name>
-            <url>http://maven/content/groups/legalit</url>
-        </repository>
-
-    </repositories>
-
-    <distributionManagement>
-
-        <repository>
-            <id>legalIT-nexus</id>
-            <name>Legal IT Releases</name>
-            <url>http://maven.qualcomm.com/content/repositories/legal_it_releases</url>
-            <uniqueVersion>true</uniqueVersion>
-        </repository>
-
-        <snapshotRepository>
-            <id>legalIT-nexus</id>
-            <name>Legal IT Snapshots</name>
-            <url>http://maven.qualcomm.com/content/repositories/legal_it_snapshot</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-
-    </distributionManagement> -->
 
 </project>

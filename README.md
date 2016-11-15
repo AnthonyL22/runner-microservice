@@ -28,7 +28,7 @@ This tool assumes you are using the [core-microservice](https://github.com/Antho
 
 ```
 <dependency>
-    <groupId>com.pwc.runner</groupId>
+    <groupId>com.pacificwebconsulting.runner</groupId>
     <artifactId>runner-microservice</artifactId>
     <version>1.0.0</version>
 </dependency>

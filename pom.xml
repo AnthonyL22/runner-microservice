@@ -4,7 +4,7 @@
 
     <groupId>com.pacificwebconsulting.runner</groupId>
     <artifactId>runner-microservice</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <name>Runner Microservice</name>
     <description>Sauce Labs concurrent execution test runner</description>
     <url>https://github.com/AnthonyL22/runner-microservice</url>
@@ -36,7 +36,7 @@
         <connection>scm:git:https://github.com/AnthonyL22/runner-microservice</connection>
         <developerConnection>scm:git:https://github.com/AnthonyL22/runner-microservice</developerConnection>
         <url>scm:git:https://github.com/AnthonyL22/runner-microservice</url>
-      <tag>HEAD</tag>
+      <tag>1.0.1</tag>
   </scm>
 
     <developers>

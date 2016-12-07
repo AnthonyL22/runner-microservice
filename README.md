@@ -20,9 +20,7 @@ This tool assumes you are using the [core-microservice](https://github.com/Antho
 ## Prerequisites
 
 1. Maven 3.x
-2. Java 1.7+
-3. ITIT Automation Service
-4. TestNG
+2. Java 1.8
 
 ## Maven Dependency
 
@@ -30,7 +28,7 @@ This tool assumes you are using the [core-microservice](https://github.com/Antho
 <dependency>
     <groupId>com.pacificwebconsulting.runner</groupId>
     <artifactId>runner-microservice</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.x</version>
 </dependency>
 ```
 

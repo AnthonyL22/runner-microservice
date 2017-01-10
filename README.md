@@ -142,4 +142,7 @@ All test results are stored in multiple 'target/failsafe-reports-X' directories.
 Results configuration settings must be modified with a wildcard since you will have multiple result XML files.  This
 wildcard will be sure to combine all test results into a single TestNG test report.
 
+IMPORTANT: Don't forget to add the <reportsDirectory> configuration to your Maven profile to ensure the TestNG results
+are correctly reported
+
 For example: **/testng-results.xml

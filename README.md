@@ -1,4 +1,6 @@
-## Purpose
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.pacificwebconsulting.runner/runner-microservice/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.pacificwebconsulting.runner/runner-microservice)
+
+## Introduction
 
 This project is to create a executable JAR file of the SaucelabsRunner class.  Typically, this executable is run by a 
 Jenkins job in which the Saucelabs Support plugin has been enabled.  

@@ -21,6 +21,11 @@ browser/version/platform version(s) combinations you ran against.
 
 This tool assumes you are using the [core-microservice](https://github.com/AnthonyL22/core-microservice/)
 
+# Questions and issues
+
+The [github issue tracker](https://github.com/AnthonyL22/runner-microservice/issues) is **_only_** for bug reports and 
+feature requests. Anything else, such as questions for help in using the library, should be [emailed to our team](http://www.pacificwebconsulting.com/contact/).  
+
 # Prerequisites
 
 1. Maven 3.x

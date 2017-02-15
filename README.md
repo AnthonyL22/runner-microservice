@@ -1,6 +1,13 @@
+<a href="http://www.pacificwebconsulting.com/" target="_blank">
+    <img src="http://www.pacificwebconsulting.com/wp-content/uploads/2016/11/PWC_logo_sm.jpg" alt="Automated Testing Solutions"
+         title="Automated Testing Solutions" align="right" />
+</a>
+
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.pacificwebconsulting.runner/runner-microservice/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.pacificwebconsulting.runner/runner-microservice)
 
-## Introduction
+Got a question?  [Email us](http://www.pacificwebconsulting.com/contact/) or reach out on [LinkedIn](https://www.linkedin.com/in/alombardo/) 
+
+# Introduction
 
 This project is to create a executable JAR file of the SaucelabsRunner class.  Typically, this executable is run by a 
 Jenkins job in which the Saucelabs Support plugin has been enabled.  
@@ -19,12 +26,12 @@ browser/version/platform version(s) combinations you ran against.
 
 This tool assumes you are using the [core-microservice](https://github.com/AnthonyL22/core-microservice/)
 
-## Prerequisites
+# Prerequisites
 
 1. Maven 3.x
 2. Java 1.8
 
-## Maven Dependency
+# Maven Dependency
 
 ```
 <dependency>
@@ -34,7 +41,7 @@ This tool assumes you are using the [core-microservice](https://github.com/Antho
 </dependency>
 ```
 
-## Simplified Order of Operations
+# Simplified Order of Operations
 
 1. Compile Saucelabs Runner via [Jenkins Job](https://github.com/AnthonyL22/runner-microservice/)
 2. Execute Saucelabs Runner JAR with SAUCE_ONDEMAND_BROWSERS environment variable set
@@ -45,7 +52,7 @@ This tool assumes you are using the [core-microservice](https://github.com/Antho
 7. Gather test results with TestNG Jenkins plugin
 
 
-## Mandatory Variable Attributes
+# Mandatory Variable Attributes
 
 The following 2 fields must be defined by your Jenkins job and passed to PERL script in this order:
 
@@ -93,12 +100,12 @@ The following configuration must be included in your Profile in the POM.xml
 </profile>
 ```    
 
-## Execute PERL Runner
+# Execute PERL Runner
 The following sample is how to execute this runner JAR to produce the resulting .pl PERL file from Jenkins.  Execution
 from Jenkins is suggested becaause the Saucelabs plugin automatically sets the SAUCE_ONDEMAND_BROWSERS environment 
 variable which is mandatory.
 
-### Jenkins Execution
+## Jenkins Execution
 Preconditions of this output are:
 
 1. Jenkins & Saucelabs Plugin setting SAUCE_ONDEMAND_BROWSERS environment variable
@@ -112,14 +119,14 @@ Preconditions of this output are:
 java -cp "C:\Program Files (x86)\Jenkins\workspace\runner-microservice\target\runner-microservice-1.0.0-SNAPSHOT.jar" com.pwc.runner.SaucelabsRunner %Test_Profile% %Test_Environment%
 ```
 
-## Acceptable Browser Resolutions
+# Acceptable Browser Resolutions
 [Saucelabs Configuration](https://docs.saucelabs.com/reference/test-configuration/)
 
 "800x600", "1024x768", "1152x720", "1152x864", "1152x900", "1280x720", "1280x768", "1280x800", "1280x960",
 "1280x1024", "1366x768", "1376x1032", "1400x1050", "1440x900", "1600x900", "1600x1200", "1680x1050",
 "1920x1200", "1920x1440", "2048x1152", "2048x1536", "2360x1770"
 
-## PERL Output Sample
+# PERL Output Sample
 
 ```
 #! perl -slw
@@ -138,7 +145,7 @@ print for $output0;
 print for $output1;
 ```
 
-## Test Results
+# Test Results
 
 All test results are stored in multiple 'target/failsafe-reports-X' directories.  In Jenkins, your Publish TestNG 
 Results configuration settings must be modified with a wildcard since you will have multiple result XML files.  This
